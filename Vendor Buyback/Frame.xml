@@ -1,0 +1,135 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Frame.lua" />
+	<Frame name="Frame1" inherits="BackdropTemplate" hidden="true" parent="UIParent" toplevel="true" movable="true" frameStrata="LOW" enableMouse="true">
+		<Size x="290" y="302" />
+		<Anchors>
+			<Anchor point="CENTER" x="-129" y="54" />
+		</Anchors>
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="BACKDROP_DIALOG_32_32" keyType="string" type="global" />
+		</KeyValues>
+		<TitleRegion setAllPoints="true">
+			<Size>
+				<AbsDimension x="0" y="30" />
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" />
+				<Anchor point="TOPRIGHT" />
+			</Anchors>
+		</TitleRegion>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize val="32" />
+			<EdgeSize val="32" />
+		</Backdrop>
+		<HitRectInsets>
+			<AbsInset left="1" right="1" top="1" bottom="1" />
+		</HitRectInsets>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="itemNameText" inherits="GameFontNormal" text="Item Name:" justifyH="LEFT">
+					<Size x="80" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="38" y="-50" />
+					</Anchors>
+				</FontString>
+				<FontString inherits="GameFontNormal" text="Rarity" justifyH="LEFT">
+					<Size x="80" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="38" y="-123" />
+					</Anchors>
+				</FontString>
+				<FontString inherits="GameFontNormal" text="Common" justifyH="LEFT">
+					<Size x="80" y="32" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="76" y="-149" />
+					</Anchors>
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="Font" inherits="GameFontNormal" text="Uncommon" justifyH="LEFT">
+					<Size x="80" y="32" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="177" y="-149" />
+					</Anchors>
+					<Color r="0.118" g="1" b="0" />
+				</FontString>
+				<FontString inherits="GameFontNormal" text="Rare" justifyH="LEFT">
+					<Size x="80" y="32" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="76" y="-187" />
+					</Anchors>
+					<Color r="0" g="0.439" b="0.867" />
+				</FontString>
+				<FontString inherits="GameFontNormal" text="Epic" justifyH="LEFT">
+					<Size x="80" y="29" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="177" y="-190" />
+					</Anchors>
+					<Color r="0.639" g="0.208" b="0.933" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="ScanButton" inherits="UIPanelButtonTemplate" text="Scan">
+				<Size x="89" y="28" />
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="Frame1" relativePoint="BOTTOM">
+						<Offset x="-2" y="34" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ScanButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="ItemNameField" inherits="InputBoxTemplate" frameStrata="MEDIUM" autoFocus="false">
+				<Size x="219" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="38" y="-76" />
+				</Anchors>
+			</EditBox>
+			<CheckButton name="FlagUncommon" inherits="UICheckButtonTemplate" parent="Frame1" text="CheckButton3" checked="true">
+				<Size x="32" y="32" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="139" y="-149" />
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="FlagCommon" inherits="UICheckButtonTemplate" parent="Frame1" text="CheckButton2" checked="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="38" y="-149" />
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="FlagEpic" inherits="UICheckButtonTemplate" text="CheckButton4" checked="true">
+				<Size x="32" y="32" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="139" y="-187" />
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="FlagRare" inherits="UICheckButtonTemplate" parent="Frame1" text="CheckButton1" checked="true">
+				<Size x="32" y="32" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="38" y="-187" />
+				</Anchors>
+			</CheckButton>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton");
+				self:RegisterEvent("GOSSIP_SHOW");
+				self:RegisterEvent("GOSSIP_CLOSED");
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+			</OnDragStop>
+			<OnEvent>
+				Frame1_OnEvent(self, event,...)
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>
