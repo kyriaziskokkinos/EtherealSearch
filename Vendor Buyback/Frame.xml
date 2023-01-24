@@ -1,6 +1,6 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="Frame.lua" />
-	<Frame name="Frame1" inherits="BackdropTemplate" hidden="true" parent="UIParent" toplevel="true" movable="true" frameStrata="LOW" enableMouse="true">
+	<Frame name="EtherealSearchFrame1" inherits="BackdropTemplate" hidden="true" parent="UIParent" toplevel="true" movable="true" frameStrata="LOW" enableMouse="true">
 		<Size x="290" y="302" />
 		<Anchors>
 			<Anchor point="CENTER" x="-129" y="54" />
@@ -38,45 +38,57 @@
 				<FontString inherits="GameFontNormal" text="Rarity" justifyH="LEFT">
 					<Size x="80" y="20" />
 					<Anchors>
-						<Anchor point="TOPLEFT" x="38" y="-123" />
+						<Anchor point="TOPLEFT" x="38" y="-107" />
 					</Anchors>
 				</FontString>
 				<FontString inherits="GameFontNormal" text="Common" justifyH="LEFT">
 					<Size x="80" y="32" />
 					<Anchors>
-						<Anchor point="TOPLEFT" x="76" y="-149" />
+						<Anchor point="TOPLEFT" x="76" y="-133" />
 					</Anchors>
 					<Color r="1" g="1" b="1" />
 				</FontString>
 				<FontString name="Font" inherits="GameFontNormal" text="Uncommon" justifyH="LEFT">
 					<Size x="80" y="32" />
 					<Anchors>
-						<Anchor point="TOPLEFT" x="177" y="-149" />
+						<Anchor point="TOPLEFT" x="177" y="-133" />
 					</Anchors>
 					<Color r="0.118" g="1" b="0" />
 				</FontString>
 				<FontString inherits="GameFontNormal" text="Rare" justifyH="LEFT">
 					<Size x="80" y="32" />
 					<Anchors>
-						<Anchor point="TOPLEFT" x="76" y="-187" />
+						<Anchor point="TOPLEFT" x="76" y="-171" />
 					</Anchors>
 					<Color r="0" g="0.439" b="0.867" />
 				</FontString>
 				<FontString inherits="GameFontNormal" text="Epic" justifyH="LEFT">
 					<Size x="80" y="29" />
 					<Anchors>
-						<Anchor point="TOPLEFT" x="177" y="-190" />
+						<Anchor point="TOPLEFT" x="177" y="-174" />
 					</Anchors>
 					<Color r="0.639" g="0.208" b="0.933" />
+				</FontString>
+				<FontString inherits="GameFontNormal" text="Auto Confirm" justifyH="LEFT">
+					<Size x="115" y="32" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="38" y="-219" />
+					</Anchors>
+				</FontString>
+				<FontString inherits="GameFontNormal" text="Exact Match">
+					<Size x="80" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="152" y="-50" />
+					</Anchors>
 				</FontString>
 			</Layer>
 		</Layers>
 		<Frames>
 			<Button name="ScanButton" inherits="UIPanelButtonTemplate" text="Scan">
-				<Size x="89" y="28" />
+				<Size x="90" y="28" />
 				<Anchors>
-					<Anchor point="CENTER" relativeTo="Frame1" relativePoint="BOTTOM">
-						<Offset x="-2" y="34" />
+					<Anchor point="CENTER" relativeTo="EtherealSearchFrame1" relativePoint="BOTTOM">
+						<Offset x="-66" y="32" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
@@ -91,27 +103,39 @@
 					<Anchor point="TOPLEFT" x="38" y="-76" />
 				</Anchors>
 			</EditBox>
-			<CheckButton name="FlagUncommon" inherits="UICheckButtonTemplate" parent="Frame1" text="CheckButton3" checked="true">
+			<CheckButton name="FlagUncommon" inherits="UICheckButtonTemplate" parent="EtherealSearchFrame1" text="CheckButton3" checked="true">
 				<Size x="32" y="32" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="139" y="-149" />
+					<Anchor point="TOPLEFT" x="139" y="-133" />
 				</Anchors>
 			</CheckButton>
-			<CheckButton name="FlagCommon" inherits="UICheckButtonTemplate" parent="Frame1" text="CheckButton2" checked="true">
+			<CheckButton name="FlagCommon" inherits="UICheckButtonTemplate" parent="EtherealSearchFrame1" text="CheckButton2" checked="true">
 				<Anchors>
-					<Anchor point="TOPLEFT" x="38" y="-149" />
+					<Anchor point="TOPLEFT" x="38" y="-133" />
 				</Anchors>
 			</CheckButton>
 			<CheckButton name="FlagEpic" inherits="UICheckButtonTemplate" text="CheckButton4" checked="true">
 				<Size x="32" y="32" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="139" y="-187" />
+					<Anchor point="TOPLEFT" x="139" y="-171" />
 				</Anchors>
 			</CheckButton>
-			<CheckButton name="FlagRare" inherits="UICheckButtonTemplate" parent="Frame1" text="CheckButton1" checked="true">
+			<CheckButton name="FlagRare" inherits="UICheckButtonTemplate" parent="EtherealSearchFrame1" text="CheckButton1" checked="true">
 				<Size x="32" y="32" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="38" y="-187" />
+					<Anchor point="TOPLEFT" x="38" y="-171" />
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="FlagAutoConfirm" inherits="UICheckButtonTemplate" text="CheckButton1">
+				<Size x="32" y="32" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="139" y="-219" />
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="FlagExact" inherits="UICheckButtonTemplate" text="CheckButton1">
+				<Size x="32" y="32" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="231" y="-45" />
 				</Anchors>
 			</CheckButton>
 		</Frames>
@@ -120,15 +144,16 @@
 				self:RegisterForDrag("LeftButton");
 				self:RegisterEvent("GOSSIP_SHOW");
 				self:RegisterEvent("GOSSIP_CLOSED");
+				EtherealSearchOnLoad()
 			</OnLoad>
 			<OnDragStart>
 				self:StartMoving();
 			</OnDragStart>
 			<OnDragStop>
-				self:StopMovingOrSizing();
+				self:StopMovingOrSizing(self);
 			</OnDragStop>
 			<OnEvent>
-				Frame1_OnEvent(self, event,...)
+				EtherealSearchFrame1_OnEvent(self, event,...)
 			</OnEvent>
 		</Scripts>
 	</Frame>
