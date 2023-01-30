@@ -1,6 +1,0 @@
-## Title: Ethereal Search
-## Version: 1.3
-## Author: DeRed
-## Interface: 30300
-
-Frame.xml
